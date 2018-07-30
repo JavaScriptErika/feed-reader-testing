@@ -63,7 +63,7 @@ $(function () {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function () {
-            let body = document.querySelector('body');
+            const body = document.querySelector('body');
             expect(body).toHaveClass('menu-hidden');
         });
 
@@ -73,26 +73,39 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it('changes when icon is clicked', function () {
-            let menuIcon = document.querySelector('.menu-icon-link')
-            let body = document.querySelector('body')
-            let hiddenMenu = document.querySelector('.menu-hidden')
+            const menuIcon = document.querySelector('.menu-icon-link');
+            const body = document.querySelector('body');
 
             menuIcon.click();
-            expect(body).not.toHaveClass('menu-hidden')
+            expect(body).not.toHaveClass('menu-hidden');
 
             menuIcon.click();
-            expect(body).toHaveClass('menu-hidden')
+            expect(body).toHaveClass('menu-hidden');
         });
 
         /* TODO: Write a new test suite named "Initial Entries" */
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        describe('Initial Entries', function () {
 
+            beforeEach(function (done) {
+                loadFeed(0, done);
+            });
+
+            /* TODO: Write a test that ensures when the loadFeed
+             * function is called and completes its work, there is at least
+             * a single .entry element within the .feed container.
+             * Remember, loadFeed() is asynchronous so this test will require
+             * the use of Jasmine's beforeEach and asynchronous done() function.
+             */
+            it('have at least 1 single entry element', function (done) {
+                const entry = document.getElementsByClassName('entry');
+
+                expect(entry.length).not.toBeLessThan(0);
+
+                done();
+            });
+
+        });
         /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
