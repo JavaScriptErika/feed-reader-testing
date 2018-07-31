@@ -86,7 +86,6 @@ $(function () {
         /* TODO: Write a new test suite named "Initial Entries" */
 
         describe('Initial Entries', function () {
-
             beforeEach(function (done) {
                 loadFeed(0, done);
             });
@@ -99,19 +98,33 @@ $(function () {
              */
             it('have at least 1 single entry element', function (done) {
                 const entry = document.getElementsByClassName('entry');
-
                 expect(entry.length).not.toBeLessThan(0);
-
                 done();
             });
 
         });
+
         /* TODO: Write a new test suite named "New Feed Selection" */
+        describe('New Feed Selection', function () {
+            let feed1;
+            let feed2;
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+            beforeEach(function (done) {
+                loadFeed(0, function () {
+                    feed1 = $('.feed').html();
+                    loadFeed(1, done)
+                });
+            });
 
+            /* TODO: Write a test that ensures when a new feed is loaded
+             * by the loadFeed function that the content actually changes.
+             * Remember, loadFeed() is asynchronous.
+             */
+            it('changes content', function (done) {
+                feed2 = $('.feed').html();
+                expect(feed1).not.toEqual(feed2)
+                done();
+            });
+        });
     });
 }());
