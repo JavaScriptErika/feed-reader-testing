@@ -112,7 +112,7 @@ $(function () {
             beforeEach(function (done) {
                 loadFeed(0, function () {
                     feed1 = $('.feed').html();
-                    loadFeed(1, done)
+                    loadFeed(1, done);
                 });
             });
 
@@ -122,7 +122,7 @@ $(function () {
              */
             it('changes content', function (done) {
                 feed2 = $('.feed').html();
-                expect(feed1).not.toEqual(feed2)
+                expect(feed1).not.toEqual(feed2);
                 done();
             });
         });
