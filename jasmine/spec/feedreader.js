@@ -64,7 +64,7 @@ $(function () {
          */
         it('is hidden by default', function () {
             const body = document.querySelector('body');
-            expect(body).toHaveClass('menu-hidden');
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
 
         /* Ensures the menu changes
@@ -98,7 +98,7 @@ $(function () {
              */
             it('have at least 1 single entry element', function (done) {
                 const entry = document.getElementsByClassName('entry');
-                expect(entry.length).not.toBeLessThan(0);
+                expect($('.feed .entry')).not.toBeLessThan(0);
                 done();
             });
 
