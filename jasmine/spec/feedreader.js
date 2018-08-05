@@ -63,8 +63,7 @@ $(function () {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function () {
-            const body = document.querySelector('body');
-            expect(body.hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         /* Ensures the menu changes
@@ -74,13 +73,13 @@ $(function () {
          */
         it('changes when icon is clicked', function () {
             const menuIcon = document.querySelector('.menu-icon-link');
-            const body = document.querySelector('body');
 
             menuIcon.click();
-            expect(body).not.toHaveClass('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
             menuIcon.click();
-            expect(body).toHaveClass('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+
         });
 
         /* Test suite named "Initial Entries" */
